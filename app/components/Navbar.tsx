@@ -1,8 +1,13 @@
 import { NavLink, useLocation } from "@remix-run/react";
 import Logo from "./Logo";
+import XMarkIcon from "~/icons/XMarkIcon";
+import { useState } from "react";
+import MenuIcon from "~/icons/MenuIcon";
 
 export default function Navbar({ links }: Props){
   const location = useLocation();
+
+  const [open, setOpen] = useState(false)
 
   return (
     <nav className="absolute top-0 left-0 z-10 w-full flex justify-between items-center px-[24px] py-[24px] sm:px-[64px] md:px-[96px] bg-transparent">
@@ -20,6 +25,9 @@ export default function Navbar({ links }: Props){
         </NavLink>
       </div>
       <div className="hidden md:flex items-center space-x-4">
+        <div onClick={() => setOpen(prevOpen => !prevOpen)} className='flex md:hidden'>
+            <MenuIcon width={32} />
+        </div>
         {links.map((link) => (
           <NavLink
             key={link.to}
@@ -34,38 +42,24 @@ export default function Navbar({ links }: Props){
           </NavLink>
         ))}
       </div>
-      <div className="md:hidden flex items-center">
-        <button className="outline-none mobile-menu-button">
-          <svg
-            className=" w-6 h-6 text-gray-500 hover:text-white"
-            x-show="!showMenu"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-          <svg
-            className="w-6 h-6 text-gray-500 hover:text-white"
-            x-show="showMenu"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-      </div>
+      {open && (<div className='w-full h-full bg-black/50 absolute top-0 left-0'>
+            <div className='w-64 h-full bg-white fixed top-0 right-0 flex flex-col rounded-l-lg'>
+                <div onClick={() => setOpen(prevOpen => !prevOpen)} className='mt-8 mr-[24px] self-end'>
+                    <XMarkIcon width={32}/>
+                </div>
+                <div className="flex flex-col items-center gap-8 mt-12">
+                    {links.map(link => {
+                        return <a key={link.id} href={link.to}>
+                            {link.label}
+                        </a>
+                    })}
+                </div>
+            </div>
+      </div>)}
     </nav>
   );
 };
 
 type Props ={
-    links: { to: string; label: string }[]
+    links: { id: number, to: string; label: string }[]
 }

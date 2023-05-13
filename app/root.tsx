@@ -27,9 +27,9 @@ export const meta = () => {
 
 export default function App() {
   const links = [
-    { to: "/", label: "Home" },
-    { to: "https://github.com/SoyTanMax", label: "Github" },
-    { to: "https://www.linkedin.com/in/max-lopez-dev/", label: "LinkedIn" },
+    { id: 0, to: "/", label: "Home" },
+    { id: 1, to: "https://github.com/SoyTanMax", label: "Github" },
+    { id: 2, to: "https://www.linkedin.com/in/max-lopez-dev/", label: "LinkedIn" },
   ];
 
   return (
