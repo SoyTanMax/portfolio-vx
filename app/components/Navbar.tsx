@@ -25,7 +25,7 @@ export default function Navbar({ links }: Props){
         </NavLink>
       </div>
       <div className="hidden md:flex items-center space-x-4">
-        <div onClick={() => setOpen(prevOpen => !prevOpen)} className='flex md:hidden'>
+        <div onClick={() => setOpen(prevOpen => !prevOpen)}>
             <MenuIcon width={32} />
         </div>
         {links.map((link) => (
