@@ -25,37 +25,41 @@ export default function Navbar({ links }: Props){
         </NavLink>
       </div>
       <div className="hidden md:flex items-center space-x-4">
-        <div onClick={() => setOpen(prevOpen => !prevOpen)}>
-            <MenuIcon width={32} />
-        </div>
         {links.map((link) => (
           <NavLink
             key={link.to}
             to={link.to}
-            className={`text-white hover:text-white transition duration-200 ${
+            target="_blank" 
+            rel="noreferrer"
+            className={`hover:text-white transition duration-200 ${
               location.pathname === link.to
-                ? "font-bold border-b-2 border-purple-500"
-                : ""
+                ? "text-white font-bold border-b-2 border-purple-500"
+                : "text-slate-400"
             }`}
           >
             {link.label}
           </NavLink>
         ))}
       </div>
-      {open && (<div className='w-full h-full bg-black/50 absolute top-0 left-0'>
-            <div className='w-64 h-full bg-white fixed top-0 right-0 flex flex-col rounded-l-lg'>
-                <div onClick={() => setOpen(prevOpen => !prevOpen)} className='mt-8 mr-[24px] self-end'>
-                    <XMarkIcon width={32}/>
-                </div>
-                <div className="flex flex-col items-center gap-8 mt-12">
-                    {links.map(link => {
-                        return <a key={link.id} href={link.to}>
-                            {link.label}
-                        </a>
-                    })}
-                </div>
+      <div onClick={() => setOpen(prevOpen => !prevOpen)} className="flex md:hidden">
+            <MenuIcon width={32} color={"white"} classes={"hover:cursor-pointer"} />
+      </div>
+      {open && (
+        <div className='w-full min-h-screen bg-black/50 absolute top-0 left-0 overflow-hidden'>
+          <div className='w-64 h-full bg-white fixed top-0 right-0 flex flex-col rounded-l-lg'>
+            <div onClick={() => setOpen(prevOpen => !prevOpen)} className='mt-8 mr-[24px] self-end'>
+              <XMarkIcon width={32} />
             </div>
-      </div>)}
+            <div className="flex flex-col items-center gap-8 mt-12">
+              {links.map(link => (
+                <a key={link.id} href={link.to} target="_blank" rel="noreferrer">
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
