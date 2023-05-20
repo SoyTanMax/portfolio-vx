@@ -1,7 +1,7 @@
 export default function StarPattern(){
     return (
         <div className="absolute top-0 z-0">
-            <svg width="1506" height="179" viewBox="0 0 1506 179" fill="none" xmlns="http://www.w3.org/2000/svg" className="max-w-full">
+            <svg width="1506" height="179" viewBox="0 0 1506 179" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="1408" cy="11" r="4" fill="url(#paint0_linear_402_2)"/>
                 <circle cx="1502" cy="152" r="4" fill="url(#paint1_linear_402_2)"/>
                 <circle cx="1137" cy="4" r="4" fill="url(#paint2_linear_402_2)"/>

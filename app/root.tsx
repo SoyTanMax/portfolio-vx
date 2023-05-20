@@ -16,15 +16,6 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
 ];
 
-export const meta = () => {
-  return [
-    {
-      title: "Max López - UX Engineer",
-      description: "Your page description",
-    },
-  ];
-};
-
 export default function App() {
   const links = [
     { id: 0, to: "/", label: "Home" },
