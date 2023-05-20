@@ -7,7 +7,7 @@ import MenuIcon from "~/icons/MenuIcon";
 export default function Navbar({ links }: Props){
   const location = useLocation();
 
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
 
   return (
     <nav className="absolute top-0 left-0 z-10 w-full flex justify-between items-center px-[24px] py-[24px] sm:px-[64px] md:px-[96px] bg-transparent">
