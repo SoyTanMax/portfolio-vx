@@ -1,6 +1,6 @@
 export default function BlueStar(){
     return (
-        <div className="absolute z-0 top-[120px] right-[15%] animate-pulse">
+        <div className="absolute z-0 top-[120px] right-[-5%] md:right-[15%] animate-pulse">
             <svg width="98" height="98" viewBox="0 0 98 98" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="49" cy="49" r="49" fill="url(#paint0_linear_111_777)" fillOpacity="0.15"/>
                 <circle cx="49.0004" cy="49" r="39.2" fill="url(#paint1_linear_111_777)" fillOpacity="0.15"/>

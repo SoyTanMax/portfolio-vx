@@ -15,7 +15,7 @@ export default function Navbar({ links }: Props){
         <NavLink to="/" className="text-white flex gap-4 items-center">
             <Logo />
             <div>
-                <p className="font-bold text-xl">
+                <p className="font-semibold text-xl">
                     Max López
                 </p>
                 <p className="text-base">
@@ -44,22 +44,24 @@ export default function Navbar({ links }: Props){
       <div onClick={() => setOpen(prevOpen => !prevOpen)} className="flex md:hidden">
             <MenuIcon width={32} color={"white"} classes={"hover:cursor-pointer"} />
       </div>
-      {open && (
-        <div className='w-full min-h-screen bg-black/50 absolute top-0 left-0 overflow-hidden'>
-          <div className='w-64 h-full bg-white fixed top-0 right-0 flex flex-col rounded-l-lg'>
+      <div className={`${open ? 'w-0' : 'w-full'} flex md:hidden min-h-screen bg-black/50 absolute top-0 right-0 overflow-hidden`}>
+        <div className={`${open ? 'w-0' : 'w-64'} ease-out duration-300 h-full bg-white fixed top-0 right-0 flex flex-col rounded-l-lg`}>
+          {!open && (
             <div onClick={() => setOpen(prevOpen => !prevOpen)} className='mt-8 mr-[24px] self-end'>
               <XMarkIcon width={32} />
             </div>
+          )}
+          {!open && (
             <div className="flex flex-col items-center gap-8 mt-12">
               {links.map(link => (
                 <a key={link.id} href={link.to} target="_blank" rel="noreferrer">
                   {link.label}
                 </a>
               ))}
-            </div>
-          </div>
+            </div>)
+          }
         </div>
-      )}
+      </div>
     </nav>
   );
 };
