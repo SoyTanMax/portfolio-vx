@@ -1,4 +1,4 @@
-import { projects } from '~/data/Projects';
+import { projects } from '~/data/projects';
 import ProjectCard from '~/components/ProjectCard';
 
 export default function ProjectsContainer(){
