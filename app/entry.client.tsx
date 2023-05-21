@@ -7,13 +7,8 @@
 import { RemixBrowser } from "@remix-run/react";
 import { startTransition, StrictMode } from "react";
 import { hydrateRoot } from "react-dom/client";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 startTransition(() => {
-  // Initialize AOS
-  AOS.init();
-
   hydrateRoot(
     document,
     <StrictMode>
